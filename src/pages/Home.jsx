@@ -1,7 +1,11 @@
+import { Layout } from '../components'
+
 export function Home() {
     return (
-        <h1>
-            Hello, Home!
-        </h1>
+        <Layout>
+            <h1>
+                Hello, Home!
+            </h1>
+        </Layout>
     );
 }

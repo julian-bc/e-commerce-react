@@ -1,7 +1,11 @@
+import { Layout } from '../components'
+
 export function SignIn() {
     return (
-        <h1>
-            Hello, Sign In!
-        </h1>
+        <Layout>
+            <h1>
+                Hello, Sign In!
+            </h1>
+        </Layout>
     )
 }
