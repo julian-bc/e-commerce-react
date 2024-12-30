@@ -4,7 +4,7 @@ export function Navbar() {
     const activeStyle = 'underline underline-offset-4';
 
     return (
-        <nav className='flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light top-0'>
+        <nav className='flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light top-0 bg-white'>
             <ul className='flex items-center gap-3'>
                 <li className='font-semibold text-lg'>
                     <NavLink to={'/'}>
@@ -20,9 +20,16 @@ export function Navbar() {
                 </li>
                 <li>
                     <NavLink 
-                    to={'/clothes'}
+                    to={'/men-clothing'}
                     className={ ({isActive}) => isActive ? activeStyle : undefined }>
-                        Clothes
+                        Men&#39;s Clothes
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                    to={'/women-clothing'}
+                    className={ ({isActive}) => isActive ? activeStyle : undefined }>
+                        Women&#39;s Clothes
                     </NavLink>
                 </li>
                 <li>
@@ -36,21 +43,7 @@ export function Navbar() {
                     <NavLink 
                     to={'/furnitures'}
                     className={ ({isActive}) => isActive ? activeStyle : undefined }>
-                        Furnitures
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                    to={'/toys'}
-                    className={ ({isActive}) => isActive ? activeStyle : undefined }>
-                        Toys
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                    to={'/others'}
-                    className={ ({isActive}) => isActive ? activeStyle : undefined }>
-                        Others
+                        Jewelery
                     </NavLink>
                 </li>
             </ul>
