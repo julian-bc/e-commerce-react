@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import { Layout, Card } from '../components'
+import { Layout, Card, ProductDetail } from '../components'
 
 export function Home() {
     const [products, setProducts] = useState([]);
@@ -30,6 +30,7 @@ export function Home() {
                     return <Card key={product.id} data={product}/>
                 })}
             </div>
+            <ProductDetail />
         </Layout>
     );
 }

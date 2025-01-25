@@ -2,6 +2,7 @@
   "version": "4",
   "specifiers": {
     "npm:@eslint/js@^9.13.0": "9.13.0",
+    "npm:@heroicons/react@^2.2.0": "2.2.0_react@18.3.1",
     "npm:@types/react-dom@^18.3.1": "18.3.1",
     "npm:@types/react@^18.3.11": "18.3.12",
     "npm:@vitejs/plugin-react@^4.3.3": "4.3.3_vite@5.4.10_@babel+core@7.25.9",
@@ -291,6 +292,12 @@
       "integrity": "sha512-HFZ4Mp26nbWk9d/BpvP0YNL6W4UoZF0VFcTw/aPPA8RpOxeFQgK+ClABGgAUXs9Y/RGX/l1vOmrqz1MQt9MNuw==",
       "dependencies": [
         "levn"
+      ]
+    },
+    "@heroicons/react@2.2.0_react@18.3.1": {
+      "integrity": "sha512-LMcepvRaS9LYHJGsF0zzmgKCUim/X3N/DQKc4jepAXJ7l8QxJ1PmxJzqplF2Z3FE4PqBAIGyJAQ/w4B5dsqbtQ==",
+      "dependencies": [
+        "react"
       ]
     },
     "@humanfs/core@0.19.0": {
@@ -2292,6 +2299,7 @@
     "packageJson": {
       "dependencies": [
         "npm:@eslint/js@^9.13.0",
+        "npm:@heroicons/react@^2.2.0",
         "npm:@types/react-dom@^18.3.1",
         "npm:@types/react@^18.3.11",
         "npm:@vitejs/plugin-react@^4.3.3",
