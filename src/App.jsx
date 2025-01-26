@@ -1,6 +1,6 @@
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import { Home, MyAccount, MyOrder, MyOrders, SignIn, NotFound } from './pages'
-import { Navbar } from './components';
+import { Navbar, CheckoutSideMenu } from './components';
 import { ShoppingCartProvider } from './contexts';
 
 const AppRoutes = () => {
@@ -22,6 +22,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes />
         <Navbar />
+        <CheckoutSideMenu />
       </BrowserRouter>
     </ShoppingCartProvider>
   )

@@ -5,7 +5,16 @@ import { ShoppingCartIcon } from '@heroicons/react/20/solid';
 
 export function Navbar() {
     const activeStyle = 'underline underline-offset-4';
-    const { count } = useContext(ShoppingCartContext);
+    const {
+        count,
+        isCheckoutSideMenuOpen,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu
+    } = useContext(ShoppingCartContext);
+
+    const toggleCheckoutSideMenu = () => {
+        isCheckoutSideMenuOpen ? closeCheckoutSideMenu() : openCheckoutSideMenu();
+    }
 
     return (
         <nav className='flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light top-0 bg-white'>
@@ -78,7 +87,9 @@ export function Navbar() {
                     </NavLink>
                 </li>
                 <li className='flex items-center'>
-                    <ShoppingCartIcon className='h-6 w-6 text-black' /> 
+                    <ShoppingCartIcon
+                    onClick={() => toggleCheckoutSideMenu()}
+                    className='h-6 w-6 text-black cursor-pointer' /> 
                     <div>{count}</div>
                 </li>
             </ul>
