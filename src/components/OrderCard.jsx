@@ -1,6 +1,16 @@
+import { useContext } from 'react';
 import { XMarkIcon } from '@heroicons/react/20/solid';
+import { ShoppingCartContext } from '../contexts';
 
-export function OrderCard({ title, imageUrl, price }) {
+export function OrderCard({ id, title, imageUrl, price }) {
+    const { cartProducts, setCartProducts, setCount } = useContext(ShoppingCartContext);
+
+    const removeProduct = () => {
+        const updatedCartProducts = cartProducts.filter(product => product.id !== id);
+        setCartProducts(updatedCartProducts);
+        setCount(updatedCartProducts.length);
+    }
+
     return (
         <div className='flex justify-between items-center mb-3'>
             <div className='flex items-center gap-2'>
@@ -11,7 +21,7 @@ export function OrderCard({ title, imageUrl, price }) {
             </div>
             <div className='flex items-center gap-2'>
                 <p className='text-lg font-medium'>{price}</p>
-                <XMarkIcon className='h-6 w-6 text-black cursor-pointer' />
+                <XMarkIcon onClick={removeProduct} className='h-6 w-6 text-black cursor-pointer' />
             </div>
         </div>
     );
