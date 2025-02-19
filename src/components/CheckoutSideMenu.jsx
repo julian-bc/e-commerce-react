@@ -6,7 +6,28 @@ import { OrderCard } from './OrderCard';
 import './styles/ProductDetail.css';
 
 export function CheckoutSideMenu() {
-    const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, cartProducts } = useContext(ShoppingCartContext);
+    const { 
+        isCheckoutSideMenuOpen,
+        closeCheckoutSideMenu,
+        cartProducts,
+        setCartProducts,
+        order,
+        setOrder,
+        setCount 
+    } = useContext(ShoppingCartContext);
+
+    const handleCheckout = () => {
+        const orderToAdd = {
+            date: new Date().toLocaleDateString(),
+            products: cartProducts,
+            totalProducts: cartProducts.length,
+            totalPrice: totalPrice(cartProducts)
+        }
+
+        setOrder([...order, orderToAdd]);
+        setCartProducts([]);
+        setCount(0);
+    }
 
     return (
         <aside className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} product-detail flex flex-col fixed right-0 border border-black rounded-lg bg-white`}>
@@ -15,7 +36,7 @@ export function CheckoutSideMenu() {
                 <XMarkIcon className='h-6 w-6 text-black cursor-pointer' onClick={() => closeCheckoutSideMenu()} />
             </div>
 
-            <div className='px-6 overflow-y-scroll'>
+            <div className='px-6 overflow-y-scroll flex-1'>
                 {cartProducts.map(product => (
                     <OrderCard
                     key={product.id}
@@ -27,10 +48,11 @@ export function CheckoutSideMenu() {
             </div>
 
             <div className='px-6'>
-                <p className='flex justify-between items-center'>
+                <p className='flex justify-between items-center mb-2'>
                     <span className='font-light'>Total:</span>
                     <span className='font-medium text-2xl'>${totalPrice(cartProducts)}</span>
                 </p>
+                <button className='bg-black w-full py-4 mb-6 text-white rounded' onClick={() => handleCheckout()}>Checkout</button>
             </div>
         </aside>
     );
