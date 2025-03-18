@@ -3,6 +3,7 @@ import { XMarkIcon } from '@heroicons/react/20/solid';
 import { ShoppingCartContext } from '../contexts';
 import { totalPrice } from '../utils';
 import { OrderCard } from './OrderCard';
+import { Link } from 'react-router-dom';
 import './styles/ProductDetail.css';
 
 export function CheckoutSideMenu() {
@@ -27,6 +28,13 @@ export function CheckoutSideMenu() {
         setOrder([...order, orderToAdd]);
         setCartProducts([]);
         setCount(0);
+        closeCheckoutSideMenu();
+    }
+
+    const removeProduct = (id) => {
+        const updatedCartProducts = cartProducts.filter(product => product.id !== id);
+        setCartProducts(updatedCartProducts);
+        setCount(updatedCartProducts.length);
     }
 
     return (
@@ -43,7 +51,8 @@ export function CheckoutSideMenu() {
                     id={product.id}
                     title={product.title} 
                     imageUrl={product.image} 
-                    price={product.price}/>
+                    price={product.price}
+                    removeProduct={removeProduct}/>
                 ))}
             </div>
 
@@ -52,7 +61,10 @@ export function CheckoutSideMenu() {
                     <span className='font-light'>Total:</span>
                     <span className='font-medium text-2xl'>${totalPrice(cartProducts)}</span>
                 </p>
-                <button className='bg-black w-full py-4 mb-6 text-white rounded' onClick={() => handleCheckout()}>Checkout</button>
+                
+                <Link to='my-orders/last'>
+                    <button className='bg-black w-full py-4 mb-6 text-white rounded' onClick={() => handleCheckout()}>Checkout</button>
+                </Link>
             </div>
         </aside>
     );
