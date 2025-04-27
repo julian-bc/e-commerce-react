@@ -13,6 +13,7 @@ export function ShoppingCartProvider({ children }) {
     const [order, setOrder] = useState([]);
     const [products, setProducts] = useState([]);
     const [searchByTitle, setSearchByTitle] = useState(null);
+    const [searchByCategory, setSearchByCategory] = useState(null);
 
     const openProductDetail = () => setIsProductDetailOpen(true);
     const closeProductDetail = () => setIsProductDetailOpen(false);
@@ -43,6 +44,11 @@ export function ShoppingCartProvider({ children }) {
         return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.trim().toLowerCase()));
     }
 
+    const filteredItemsByCategory = (items, searchByCategory) => {
+        if (!searchByCategory) return items;
+        return items?.filter(item => item.category.toLowerCase() == searchByCategory);
+    }
+
     return (
         <ShoppingCartContext.Provider value={{ 
             count,
@@ -61,9 +67,10 @@ export function ShoppingCartProvider({ children }) {
             order,
             setOrder,
             setProducts,
-            products: filteredItemsByTitle(products, searchByTitle),
+            products: filteredItemsByCategory(filteredItemsByTitle(products, searchByTitle), searchByCategory),
             setSearchByTitle,
-            searchByTitle
+            searchByTitle,
+            setSearchByCategory,
         }}>
             { children }
         </ShoppingCartContext.Provider>

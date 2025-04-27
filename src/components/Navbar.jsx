@@ -9,7 +9,8 @@ export function Navbar() {
         count,
         isCheckoutSideMenuOpen,
         openCheckoutSideMenu,
-        closeCheckoutSideMenu
+        closeCheckoutSideMenu,
+        setSearchByCategory,
     } = useContext(ShoppingCartContext);
 
     const toggleCheckoutSideMenu = () => {
@@ -27,6 +28,7 @@ export function Navbar() {
                 <li>
                     <NavLink 
                     to={'/'}
+                    onClick={() => setSearchByCategory()}
                     className={ ({isActive}) => isActive ? activeStyle : undefined }>
                         All
                     </NavLink>
@@ -34,6 +36,7 @@ export function Navbar() {
                 <li>
                     <NavLink 
                     to={'/men-clothing'}
+                    onClick={() => setSearchByCategory('men\'s clothing')}
                     className={ ({isActive}) => isActive ? activeStyle : undefined }>
                         Men&#39;s Clothes
                     </NavLink>
@@ -41,6 +44,7 @@ export function Navbar() {
                 <li>
                     <NavLink 
                     to={'/women-clothing'}
+                    onClick={() => setSearchByCategory('women\'s clothing')}
                     className={ ({isActive}) => isActive ? activeStyle : undefined }>
                         Women&#39;s Clothes
                     </NavLink>
@@ -48,13 +52,15 @@ export function Navbar() {
                 <li>
                     <NavLink 
                     to={'/electronics'}
+                    onClick={() => setSearchByCategory('electronics')}
                     className={ ({isActive}) => isActive ? activeStyle : undefined }>
                         Electronics
                     </NavLink>
                 </li>
                 <li>
                     <NavLink 
-                    to={'/furnitures'}
+                    to={'/jewelery'}
+                    onClick={() => setSearchByCategory('jewelery')}
                     className={ ({isActive}) => isActive ? activeStyle : undefined }>
                         Jewelery
                     </NavLink>
